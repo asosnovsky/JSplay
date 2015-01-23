@@ -2,7 +2,7 @@ var City = (function(cityName) {
 	//-----------------------------------------
 	//	Check there is a city name
 	//-----------------------------------------
-	if(!cityName) cityName = 'New Town';
+	if(!cityName) cityName = 'New City';
 
 	//-----------------------------------------
 	//	Define Classes
@@ -57,10 +57,10 @@ var City = (function(cityName) {
 	function Birth() {}
 	function Age() {}
 	function Culture() {}
-	function Town() {}
+	function City() {}
 
 	//-----------------------------------------
-	//	Helpers
+	//	Culture Module Configuration
 	//-----------------------------------------
 	Culture.prototype.addNewFactor = function (type, name, freq) {
 		if(!freq) freq = (1 / __factors[type].length);
@@ -171,13 +171,13 @@ var City = (function(cityName) {
 	};
 
 	//-----------------------------------------
-	//	Town Module Configuration
+	//	City Module Configuration
 	//-----------------------------------------
-	Town.prototype.checkPeople = function() {
+	City.prototype.checkPeople = function() {
 		return _people;
 	};
 
-	Town.prototype.createTown = function() {
+	City.prototype.createCity = function() {
 		if(__started) throw new Error('City already started, can\'t start again!');
 		__started = true;
 
@@ -191,13 +191,13 @@ var City = (function(cityName) {
 		new Age().aging();
 	};
 
-	Town.prototype.makeBaby = function(name, sex) {
+	City.prototype.makeBaby = function(name, sex) {
 		new Culture().checkOrigins('sex',sex);
 		new Culture().checkOrigins('names',name);
 		new Birth().makeBaby(name, sex);
 	};
 
-	Town.prototype.addFactors = function(factors) {
+	City.prototype.addFactors = function(factors) {
 		if(!factors) {
 			return this.checkFactors();
 			throw 'addFactors is called for no reason!';
@@ -226,7 +226,7 @@ var City = (function(cityName) {
 		}
 	};
 
-	Town.prototype.changeFactors = function(factors) {
+	City.prototype.changeFactors = function(factors) {
 		if(!factors) {
 			return this.checkFactors();
 			throw 'changeFactors is called for no reason!';
@@ -272,11 +272,11 @@ var City = (function(cityName) {
 		}
 	};
 
-	Town.prototype.checkFactors = function() {
+	City.prototype.checkFactors = function() {
 		return __factors;
 	};
 
-	Town.prototype.checkStats = function() {
+	City.prototype.checkStats = function() {
 		
 		var retObj = {
 			number_of_people_alive: _people.length,
@@ -327,14 +327,14 @@ var City = (function(cityName) {
 		return retObj;
 	};
 
-	return new Town();
+	return new City();
 
 });
 
 var Luxemburg = new City('Luxemburg');
 var Toronto = new City('Toronto');
 
-Luxemburg.createTown();
-Toronto.createTown();
+Luxemburg.createCity();
+Toronto.createCity();
 
 Toronto.addFactors({names:[{name: 'Rob', freq: 0.01} , 'Trudeau' , 'Peter']});
