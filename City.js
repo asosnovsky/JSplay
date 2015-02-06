@@ -73,7 +73,7 @@ var City = (function(cityName) {
 		};
 		__factors[type + '_freq'][__factors[type].length] = 1 - sum;
 		__factors[type][__factors[type].length] = name;
-		console.log('%c New ' + type + ' were introduced to ' + cityName + ': ' + name + '!', 'background:blue;color:white;');
+		console.log('New ' + type + ' were introduced to ' + cityName + ': ' + name + '!');
 	};
 	
 	Culture.prototype.checkOrigins = function(type, name) {
@@ -123,7 +123,7 @@ var City = (function(cityName) {
 				if(_people[i].age% 1 === 0) console.log(_people[i].name + ' of ' + cityName + ' is now ' + _people[i].age);
 			   
 				if ( new Death().death(i) ) {
-						console.log('%c ' + _people[i].name + ' of ' + cityName + ' has died at age ' + _people[i].age, 'background:red;color:white;');
+						console.log( _people[i].name + ' of ' + cityName + ' has died at age ' + _people[i].age);
 						_people.splice(i,1);
 				}
 		};
@@ -167,7 +167,7 @@ var City = (function(cityName) {
 		if(!sex) sex = this.determine('sex');
 
 		_people.push({name:name, age:0, sex:sex});
-		console.log( '%c ' + name + ' (' + sex + ') was Born in ' + cityName + '!', 'background:green;color:white;');
+		console.log( name + ' (' + sex + ') was Born in ' + cityName + '!');
 	};
 
 	//-----------------------------------------
